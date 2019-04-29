@@ -7,8 +7,8 @@ import Footer from './Footer.js';
 class App extends Component {
   state = {
     items: [
-      'one',
-      'two'
+      {text: 'one', state: 'completed'},
+      {text: 'two', state: 'active'},
     ]
   };
 
