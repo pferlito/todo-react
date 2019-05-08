@@ -18,6 +18,7 @@ class Toggle extends Component {
           onChange={() => this.handleChange()}
         />
         <label>{this.props.value.text}</label>
+        <button className="destroy"></button>
       </React.Fragment>
     )
   }
