@@ -13,7 +13,7 @@ class TodoList extends Component {
     const mutatedState = [...this.props.items];
     mutatedState[index].state = states[newState];
     this.setState(mutatedState);
-  }
+  };
   render() {
     let self = this;
     return (
@@ -26,7 +26,10 @@ class TodoList extends Component {
               return (
                 <li key={index} className={value.state === 'completed' ? 'completed' : ''}>
                   <div className="view">
-                    <Toggle value={value} handleChange={self.handleChange} index={index}/>
+                    <Toggle value = {value}
+                      handleChange = {self.handleChange}
+                      handleDestroy = {self.props.handleDestroy}
+                      index={index}/>
                   </div>
                 </li>
               )

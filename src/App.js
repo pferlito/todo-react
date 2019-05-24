@@ -11,12 +11,18 @@ class App extends Component {
       {text: 'two', state: 'active'},
     ]
   };
-
+  handleDestroy = (index) => {
+    console.log(this.state);
+    const mutatedItems = [...this.state.items];
+    mutatedItems.splice(index,1);
+    this.setState({items: mutatedItems});
+    console.log(mutatedItems);
+  };
   render() {
     return (
       <section className="todoapp">
         <Header/>
-        <TodoList items={this.state.items}/>
+        <TodoList items={this.state.items} handleDestroy={this.handleDestroy} />
         <Footer/>
       </section>
     )

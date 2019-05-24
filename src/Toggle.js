@@ -7,7 +7,9 @@ class Toggle extends Component {
   handleChange() {
     this.props.handleChange(this.props.index);
   }
-
+  handleDestroy() {
+    this.props.handleDestroy(this.props.index);
+  }
   render() {
     let self = this;
     return (
@@ -18,7 +20,7 @@ class Toggle extends Component {
           onChange={() => this.handleChange()}
         />
         <label>{this.props.value.text}</label>
-        <button className="destroy"></button>
+        <button className="destroy" onClick={() => this.handleDestroy()}></button>
       </React.Fragment>
     )
   }
