@@ -9,7 +9,8 @@ class App extends Component {
     items: [
       {text: 'one', state: 'completed'},
       {text: 'two', state: 'active'},
-    ]
+    ],
+    filter: []
   };
 
   handleAdd = (value) => {
@@ -32,7 +33,9 @@ class App extends Component {
     this.setState(mutatedItems);
   };
   handleFilter = (mode) => {
-    console.log('in handleFilter')
+    const mutatedState = {...this.state};
+    mutatedState.filter = mode;
+    this.setState(mutatedState);
   };
 
   render() {
@@ -46,7 +49,7 @@ class App extends Component {
           handleDestroy={(index) => this.handleDestroy(index)}
         />
         <Footer list={this.state}
-          handleFilter={(mode) =>this.handleFilter(mode)}
+          handleFilter={(mode) => this.handleFilter(mode)}
         />
       </section>
     )
