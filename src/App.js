@@ -11,18 +11,43 @@ class App extends Component {
       {text: 'two', state: 'active'},
     ]
   };
-  handleAdd(value) {
+
+  handleAdd = (value) => {
     let mutatedState = {...this.state};
     mutatedState.items.push({text: value, state: 'active'});
     this.setState(mutatedState);
-  }
+  };
+  handleChange = (index) => {
+    const states = ['active','completed'];
+    const currentState = this.state.items[index].state;
+    const currentStateIndex = states.indexOf(currentState);
+    const newState = currentStateIndex ? 0 : 1;
+    const mutatedState = [...this.state.items];
+    mutatedState[index].state = states[newState];
+    this.setState(mutatedState);
+  };
+  handleDestroy = (index) => {
+    const mutatedItems = {...this.state};
+    mutatedItems.items.splice(index,1);
+    this.setState(mutatedItems);
+  };
+  handleFilter = (mode) => {
+    console.log('in handleFilter')
+  };
 
   render() {
     return (
       <section className="todoapp">
-        <Header list={this.state} handleAdd={(value) => this.handleAdd(value)}/>
-        <TodoList list={this.state}/>
-        <Footer/>
+        <Header list={this.state}
+          handleAdd={(value) => this.handleAdd(value)}
+        />
+        <TodoList list={this.state}
+          handleChange={(index) => this.handleChange(index)}
+          handleDestroy={(index) => this.handleDestroy(index)}
+        />
+        <Footer list={this.state}
+          handleFilter={(mode) =>this.handleFilter(mode)}
+        />
       </section>
     )
   }

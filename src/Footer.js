@@ -10,10 +10,10 @@ class Footer extends Component {
             <a href="#/" className="selected">All</a>
           </li>
           <li>
-            <a href="#/active">Active</a>
+            <a onClick={() => this.props.handleFilter('active')} href="#/active">Active</a>
           </li>
           <li>
-            <a href="#/completed">Completed</a>
+            <a onClick={() => this.props.handleFilter('completed')} href="#/completed">Completed</a>
           </li>
         </ul>
         <button className="clear-completed">Clear completed</button>
