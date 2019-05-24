@@ -11,11 +11,17 @@ class App extends Component {
       {text: 'two', state: 'active'},
     ]
   };
+  handleAdd(value) {
+    let mutatedState = {...this.state};
+    mutatedState.items.push({text: value, state: 'active'});
+    this.setState(mutatedState);
+  }
+
   render() {
     return (
       <section className="todoapp">
-        <Header/>
-        <TodoList list={this.state} handleDestroy={this.handleDestroy} />
+        <Header list={this.state} handleAdd={(value) => this.handleAdd(value)}/>
+        <TodoList list={this.state}/>
         <Footer/>
       </section>
     )
