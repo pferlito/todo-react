@@ -10,7 +10,7 @@ class App extends Component {
       {text: 'one', state: 'completed'},
       {text: 'two', state: 'active'},
     ],
-    filter: []
+    filter: ""
   };
 
   handleAdd = (value) => {

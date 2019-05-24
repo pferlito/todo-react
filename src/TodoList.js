@@ -2,17 +2,20 @@ import React, {Component} from 'react';
 import Toggle from './Toggle.js';
 
 class TodoList extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     let self = this;
+    let filteredItems = this.props.list.items;
+    if (this.props.list.filter) {
+        filteredItems = this.props.list.items.filter((el, idx) => {
+        return el.state === this.props.list.filter;
+      });
+    }
     return (
       <section className="main">
         <input id="toggle-all" className="toggle-all" type="checkbox"/>
         <label htmlFor="toggle-all">Mark all as complete</label>
         <ul className="todo-list">
-          {this.props.list.items.map(
+          {filteredItems.map(
             function (value, index) {
               return (
                 <li key={index} className={value.state === 'completed' ? 'completed' : ''}>

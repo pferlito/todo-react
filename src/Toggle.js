@@ -1,9 +1,6 @@
 import React, {Component} from 'react';
 
 class Toggle extends Component {
-  constructor(props) {
-    super(props);
-  }
   handleChange() {
     this.props.handleChange(this.props.index);
   }
@@ -11,7 +8,6 @@ class Toggle extends Component {
     this.props.handleDestroy(this.props.index);
   }
   render() {
-    let self = this;
     return (
       <React.Fragment>
         <input className="toggle"

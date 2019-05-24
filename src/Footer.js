@@ -7,7 +7,7 @@ class Footer extends Component {
         <span className="todo-count"></span>
         <ul className="filters">
           <li>
-            <a href="#/" className="selected">All</a>
+            <a onClick={() => this.props.handleFilter('')} href="#/" className="selected">All</a>
           </li>
           <li>
             <a onClick={() => this.props.handleFilter('active')} href="#/active">Active</a>
