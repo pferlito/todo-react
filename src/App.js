@@ -6,10 +6,7 @@ import Footer from './Footer.js';
 
 class App extends Component {
   state = {
-    items: [
-      {text: 'one', state: 'completed'},
-      {text: 'two', state: 'active'},
-    ],
+    items: [],
     filter: ""
   };
 
@@ -39,17 +36,22 @@ class App extends Component {
   };
 
   render() {
+    const active = this.state.items.filter(function(el,idx) {
+      return el.state === 'active';
+    });
+    const count = active.length;
     return (
       <section className="todoapp">
         <Header list={this.state}
-          handleAdd={(value) => this.handleAdd(value)}
+          handleAdd={this.handleAdd}
         />
         <TodoList list={this.state}
-          handleChange={(index) => this.handleChange(index)}
+          handleChange={this.handleChange}
           handleDestroy={(index) => this.handleDestroy(index)}
         />
         <Footer list={this.state}
           handleFilter={(mode) => this.handleFilter(mode)}
+          count={count}
         />
       </section>
     )

@@ -16,7 +16,7 @@ class TodoList extends Component {
         <label htmlFor="toggle-all">Mark all as complete</label>
         <ul className="todo-list">
           {filteredItems.map(
-            function (value, index) {
+  function (value, index) {
               return (
                 <li key={index} className={value.state === 'completed' ? 'completed' : ''}>
                   <div className="view">
