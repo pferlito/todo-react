@@ -20,7 +20,11 @@ class Footer extends Component {
             <a onClick={() => this.props.handleFilter('completed')} href="#/completed">Completed</a>
           </li>
         </ul>
-        <button style={completedStyle} className="clear-completed">Clear completed</button>
+        <button
+          style={completedStyle}
+          onClick={() => this.props.handleClear()}
+          className="clear-completed">Clear completed
+        </button>
       </footer>
     )
   }

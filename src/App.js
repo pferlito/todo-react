@@ -37,9 +37,9 @@ class App extends Component {
    * @param index
    */
   handleDestroy = (index) => {
-    const mutatedItems = {...this.state};
-    mutatedItems.items.splice(index,1);
-    this.setState(mutatedItems);
+    const mutatedState = {...this.state};
+    mutatedState.items.splice(index,1);
+    this.setState(mutatedState);
   };
   /**
    * Handle filter selection.
@@ -48,6 +48,15 @@ class App extends Component {
   handleFilter = (mode) => {
     const mutatedState = {...this.state};
     mutatedState.filter = mode;
+    this.setState(mutatedState);
+  };
+
+  /**
+   * Handle clear of completed items.
+   */
+  handleClear = () => {
+    const mutatedState = {...this.state};
+    mutatedState.items = this.state.items.filter((el) => el.state !== 'completed');
     this.setState(mutatedState);
   };
 
@@ -74,6 +83,7 @@ class App extends Component {
         />
         <Footer list={this.state}
           handleFilter={this.handleFilter}
+          handleClear={this.handleClear}
           activeCount={activeCount}
           completedCount={completedCount}
         />
