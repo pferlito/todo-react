@@ -3,13 +3,14 @@ import Toggle from './Toggle.js';
 
 class TodoList extends Component {
   render() {
-    let self = this;
     let filteredItems = this.props.list.items;
+    // filter items according to selected filter
     if (this.props.list.filter) {
         filteredItems = this.props.list.items.filter((el, idx) => {
         return el.state === this.props.list.filter;
       });
     }
+    const self = this;
     return (
       <section className="main">
         <input id="toggle-all" className="toggle-all" type="checkbox"/>

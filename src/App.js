@@ -10,11 +10,19 @@ class App extends Component {
     filter: ""
   };
 
+  /**
+   * Handle addition of new item.
+   * @param value
+   */
   handleAdd = (value) => {
-    let mutatedState = {...this.state};
+    const mutatedState = {...this.state};
     mutatedState.items.push({text: value, state: 'active'});
     this.setState(mutatedState);
   };
+  /**
+   * Handle change in completion state.
+   * @param index
+   */
   handleChange = (index) => {
     const states = ['active','completed'];
     const currentState = this.state.items[index].state;
@@ -24,11 +32,19 @@ class App extends Component {
     mutatedState[index].state = states[newState];
     this.setState(mutatedState);
   };
+  /**
+   * Handle removal of item.
+   * @param index
+   */
   handleDestroy = (index) => {
     const mutatedItems = {...this.state};
     mutatedItems.items.splice(index,1);
     this.setState(mutatedItems);
   };
+  /**
+   * Handle filter selection.
+   * @param mode
+   */
   handleFilter = (mode) => {
     const mutatedState = {...this.state};
     mutatedState.filter = mode;
@@ -36,9 +52,8 @@ class App extends Component {
   };
 
   render() {
-    const active = this.state.items.filter(function(el,idx) {
-      return el.state === 'active';
-    });
+    // get count of active items
+    const active = this.state.items.filter((el) => el.state === 'active');
     const count = active.length;
     return (
       <section className="todoapp">
@@ -47,10 +62,10 @@ class App extends Component {
         />
         <TodoList list={this.state}
           handleChange={this.handleChange}
-          handleDestroy={(index) => this.handleDestroy(index)}
+          handleDestroy={this.handleDestroy}
         />
         <Footer list={this.state}
-          handleFilter={(mode) => this.handleFilter(mode)}
+          handleFilter={this.handleFilter}
           count={count}
         />
       </section>
