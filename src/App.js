@@ -52,9 +52,17 @@ class App extends Component {
   };
 
   render() {
-    // get count of active items
-    const active = this.state.items.filter((el) => el.state === 'active');
-    const count = active.length;
+    // get count of active and completed items
+    let activeCount = 0;
+    let completedCount = 0;
+    this.state.items.forEach((el) => {
+      if (el.state === 'active') {
+        activeCount++;
+      } else {
+        completedCount++;
+      }
+    });
+
     return (
       <section className="todoapp">
         <Header list={this.state}
@@ -66,7 +74,8 @@ class App extends Component {
         />
         <Footer list={this.state}
           handleFilter={this.handleFilter}
-          count={count}
+          activeCount={activeCount}
+          completedCount={completedCount}
         />
       </section>
     )
