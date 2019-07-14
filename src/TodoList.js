@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Toggle from './Toggle.js';
+import ToggleAll from './ToggleAll.js';
 
 class TodoList extends Component {
   render() {
@@ -13,8 +14,9 @@ class TodoList extends Component {
     const self = this;
     return (
       <section className="main">
-        <input id="toggle-all" className="toggle-all" type="checkbox"/>
-        <label htmlFor="toggle-all">Mark all as complete</label>
+        <ToggleAll
+          handleToggleAll = {() => self.props.handleToggleAll()}
+        />
         <ul className="todo-list">
           {filteredItems.map(
   function (value, index) {

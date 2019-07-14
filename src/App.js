@@ -11,8 +11,23 @@ class App extends Component {
   };
 
   /**
+   * Handle bulk toggling.
+   */
+  handleToggleAll = () => {
+    const foundActive = this.state.items.some(function(el) {
+      return el.state === 'active';
+    });
+    const mutatedState = [...this.state.items];
+    let newval = foundActive ? 'completed' : 'active';
+    mutatedState.forEach(function(el) {
+      el.state = newval;
+    });
+    this.setState(mutatedState);
+  };
+
+  /**
    * Handle addition of new item.
-   * @param value
+   * @param value item text
    */
   handleAdd = (value) => {
     const mutatedState = {...this.state};
@@ -80,6 +95,7 @@ class App extends Component {
         <TodoList list={this.state}
           handleChange={this.handleChange}
           handleDestroy={this.handleDestroy}
+          handleToggleAll={this.handleToggleAll}
         />
         <Footer list={this.state}
           handleFilter={this.handleFilter}
