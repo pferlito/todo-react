@@ -1,4 +1,5 @@
 import React from 'react';
+import Toggle from './Toggle';
 
 function TodoList(props) {
   const filteredItems = props.list.items;
@@ -14,7 +15,10 @@ function TodoList(props) {
               <li key={index}
                   className={value.state === 'completed' ? 'completed' : ''}>
                 <div className="view">
-                  {value}
+                  <Toggle value={value}
+                          handleChange={(index) => props.handleChange(index)}
+                          handleDestroy={(index) => props.handleDestroy(index)}
+                          index={index}/>
                 </div>
               </li>
             )
