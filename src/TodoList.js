@@ -1,8 +1,9 @@
 import React from 'react';
 import Toggle from './Toggle';
+import PropTypes from 'prop-types';
 
 function TodoList(props) {
-  const filteredItems = props.list.items;
+  const filteredItems = props.list.itemsList;
 
   return (
     <section className="main">
@@ -10,12 +11,12 @@ function TodoList(props) {
       <label htmlFor="toggle-all">Mark all as complete</label>
       <ul className="todo-list">
         {filteredItems.map(
-          function (value, index) {
+          function (item, index) {
             return (
               <li key={index}
-                  className={value.state === 'completed' ? 'completed' : ''}>
+                  className={item.state === 'completed' ? 'completed' : ''}>
                 <div className="view">
-                  <Toggle value={value}
+                  <Toggle value={item}
                           handleChange={(index) => props.handleChange(index)}
                           handleDestroy={(index) => props.handleDestroy(index)}
                           index={index}/>
@@ -28,5 +29,9 @@ function TodoList(props) {
     </section>
   )
 }
+
+TodoList.propTypes = {
+  list: PropTypes.object.isRequired
+};
 
 export default TodoList;

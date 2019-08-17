@@ -13,12 +13,10 @@ const handleDestroy = () => {
 
 function App() {
   let state = {
-    items: [{text: 'one', state: 'active'}, {text: 'two', state: 'active'}],
+    itemsList: [{text: 'one', state: 'active'}, {text: 'two', state: 'active'}],
     filter: ""
   };
-  let current_state;
-  let setState;
-  [current_state, setState] = useState(state);
+  const [current_state, setState] = useState(state);
 
   return (
     <section className="todoapp">

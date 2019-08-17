@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 
 function Toggle(props) {
   const handleChange = () => props.handleChange(props.index);
@@ -15,5 +17,9 @@ function Toggle(props) {
     </React.Fragment>
   )
 }
+
+Toggle.propTypes = {
+  value: PropTypes.object.isRequired,
+};
 
 export default Toggle;
