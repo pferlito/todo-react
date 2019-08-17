@@ -14,12 +14,12 @@ class App extends Component {
    * Handle bulk toggling.
    */
   handleToggleAll = () => {
-    const foundActive = this.state.items.some(function(el) {
+    const foundActive = this.state.items.some(function (el) {
       return el.state === 'active';
     });
     const mutatedState = [...this.state.items];
     let newval = foundActive ? 'completed' : 'active';
-    mutatedState.forEach(function(el) {
+    mutatedState.forEach(function (el) {
       el.state = newval;
     });
     this.setState(mutatedState);
@@ -39,7 +39,7 @@ class App extends Component {
    * @param index
    */
   handleChange = (index) => {
-    const states = ['active','completed'];
+    const states = ['active', 'completed'];
     const currentState = this.state.items[index].state;
     const currentStateIndex = states.indexOf(currentState);
     const newState = currentStateIndex ? 0 : 1;
@@ -53,7 +53,7 @@ class App extends Component {
    */
   handleDestroy = (index) => {
     const mutatedState = {...this.state};
-    mutatedState.items.splice(index,1);
+    mutatedState.items.splice(index, 1);
     this.setState(mutatedState);
   };
   /**
@@ -90,18 +90,18 @@ class App extends Component {
     return (
       <section className="todoapp">
         <Header list={this.state}
-          handleAdd={this.handleAdd}
+                handleAdd={this.handleAdd}
         />
         <TodoList list={this.state}
-          handleChange={this.handleChange}
-          handleDestroy={this.handleDestroy}
-          handleToggleAll={this.handleToggleAll}
+                  handleChange={this.handleChange}
+                  handleDestroy={this.handleDestroy}
+                  handleToggleAll={this.handleToggleAll}
         />
         <Footer list={this.state}
-          handleFilter={this.handleFilter}
-          handleClear={this.handleClear}
-          activeCount={activeCount}
-          completedCount={completedCount}
+                handleFilter={this.handleFilter}
+                handleClear={this.handleClear}
+                activeCount={activeCount}
+                completedCount={completedCount}
         />
       </section>
     )

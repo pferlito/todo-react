@@ -5,6 +5,7 @@ class Header extends Component {
     super(props);
     this.input = React.createRef();
   }
+
   handleAdd = (e) => {
     e.preventDefault();
     const value = this.input.current.value;
@@ -18,8 +19,8 @@ class Header extends Component {
         <h1>todos</h1>
         <form onSubmit={this.handleAdd}>
           <input className="new-todo" ref={this.input}
-             placeholder="What needs to be done?"
-             autoFocus=""/>
+                 placeholder="What needs to be done?"
+                 autoFocus=""/>
         </form>
       </header>
     )

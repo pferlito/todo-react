@@ -9,7 +9,7 @@ class ToggleAll extends Component {
     return (
       <React.Fragment>
         <input id="toggle-all" className="toggle-all" type="checkbox"
-          onClick={this.handleToggleAll}
+               onClick={this.handleToggleAll}
         />
         <label htmlFor="toggle-all">Mark all as complete</label>
       </React.Fragment>
