@@ -20,8 +20,7 @@ function App() {
 
   return (
     <section className="todoapp">
-      <Header list={current_state}
-              handleAdd={handleAdd}
+      <Header handleAdd={handleAdd}
       />
       <TodoList list={current_state}
                 handleChange={handleChange}
