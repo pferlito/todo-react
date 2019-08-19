@@ -1,4 +1,5 @@
 import React from 'react';
+import Header from "./Header";
 
 function Footer(props) {
   return (
@@ -19,5 +20,10 @@ function Footer(props) {
     </footer>
   )
 }
+
+Footer.propTypes = {
+
+};
+
 
 export default Footer;

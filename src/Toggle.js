@@ -2,18 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 
-function Toggle(props) {
-  const handleChange = () => props.handleChange(props.index);
-  const handleDestroy = () => props.handleDestroy(props.index);
+function Toggle({value, handleChange, handleDestroy, index}) {
+  const doChange = () => handleChange(index);
+  const doDestroy = () => handleDestroy(index);
   return (
     <React.Fragment>
       <input className="toggle"
              type="checkbox"
-             checked={props.value.state === 'completed'}
-             onChange={handleChange}
+             checked={value.state === 'completed'}
+             onChange={doChange}
       />
-      <label>{props.value.text}</label>
-      <button className="destroy" onClick={handleDestroy}></button>
+      <label>{value.text}</label>
+      <button className="destroy" onClick={doDestroy}></button>
     </React.Fragment>
   )
 }

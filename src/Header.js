@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 
 function Header({handleAdd}) {
   let textInput = null;
@@ -23,5 +25,9 @@ function Header({handleAdd}) {
     </header>
   )
 }
+
+Header.propTypes = {
+  handleAdd: PropTypes.func.isRequired
+};
 
 export default Header;
