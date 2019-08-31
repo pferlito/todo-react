@@ -8,7 +8,7 @@ class Toggle extends Component {
     } else {
       newState = 'completed';
     }
-    this.props.handleChange(this.props.index, newState)
+    this.props.handleTextChange(this.props.index, newState)
   };
   handleDestroy = () => this.props.handleDestroy(this.props.index);
 
@@ -20,7 +20,9 @@ class Toggle extends Component {
           checked={this.props.value.state === 'completed'}
           onChange={this.handleChange}
         />
-        <label>{this.props.value.text}</label>
+        <label
+          onClick={(e) => this.props.handleToggleClick(this.props.index)}
+        >{this.props.value.text}</label>
         <button className="destroy" onClick={this.handleDestroy}></button>
       </React.Fragment>
     )

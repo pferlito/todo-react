@@ -6,11 +6,20 @@ class TodoList extends Component {
   handleDoubleClick(index) {
     this.props.handleStateChange(index, 'editing');
   }
-  handleChange(e, index) {
+  handleTextChange(e, index) {
     this.props.handleTextChange(index, e.target.value);
   }
   handleBlur(index) {
     this.props.handleStateChange(index, 'active');
+  }
+  // A single click causes a blur to the item being edited.
+  handleToggleClick(index) {
+    const editedIndex = this.props.list.items.findIndex((el) => {
+      return el.state === 'editing'
+    });
+    if (editedIndex > -1) {
+      this.handleBlur(editedIndex);
+    }
   }
   render() {
     let filteredItems = this.props.list.items;
@@ -35,16 +44,19 @@ class TodoList extends Component {
                     className={value.state}>
                   <div className="view">
                     <Toggle value={value}
-                            handleChange={(index, newState) => self.props.handleStateChange(index, newState)}
-                            handleDestroy={(index) => self.props.handleDestroy(index)}
-                            index={index}/>
+                      handleChange={(index, newState) => self.props.handleStateChange(index, newState)}
+                      handleToggleClick={(index) => self.handleToggleClick(index)}
+                      handleDestroy={(index) => self.props.handleDestroy(index)}
+                      index={index}/>
                   </div>
+                  {value.state === 'editing' &&
                   <input
-                    onChange={(e) => self.handleChange(e,index)}
-                    onBlur={(e) => self.handleBlur(index)}
                     type="text"
                     className="edit"
-                    defaultValue={value.text}/>
+                    onChange={(e) => self.handleTextChange(e,index)}
+                    onBlur={(e) => {self.handleBlur(index)}}
+                    defaultValue={value.text}
+                  />}
                 </li>
               )
             }
