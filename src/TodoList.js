@@ -44,7 +44,7 @@ class TodoList extends Component {
                     className={value.state}>
                   <div className="view">
                     <Toggle value={value}
-                      handleChange={(index, newState) => self.props.handleStateChange(index, newState)}
+                      handleStateChange={(index, newState) => self.props.handleStateChange(index, newState)}
                       handleToggleClick={(index) => self.handleToggleClick(index)}
                       handleDestroy={(index) => self.props.handleDestroy(index)}
                       index={index}/>

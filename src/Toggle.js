@@ -8,7 +8,7 @@ class Toggle extends Component {
     } else {
       newState = 'completed';
     }
-    this.props.handleTextChange(this.props.index, newState)
+    this.props.handleStateChange(this.props.index, newState)
   };
   handleDestroy = () => this.props.handleDestroy(this.props.index);
 
