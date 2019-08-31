@@ -37,14 +37,11 @@ class App extends Component {
   /**
    * Handle change in completion state.
    * @param index
+   * @param newState
    */
-  handleChange = (index) => {
-    const states = ['active', 'completed'];
-    const currentState = this.state.items[index].state;
-    const currentStateIndex = states.indexOf(currentState);
-    const newState = currentStateIndex ? 0 : 1;
+  handleStateChange = (index, newState) => {
     const mutatedState = [...this.state.items];
-    mutatedState[index].state = states[newState];
+    mutatedState[index].state = newState;
     this.setState(mutatedState);
   };
   /**
@@ -93,7 +90,7 @@ class App extends Component {
                 handleAdd={this.handleAdd}
         />
         <TodoList list={this.state}
-                  handleChange={this.handleChange}
+                  handleStateChange={this.handleStateChange}
                   handleDestroy={this.handleDestroy}
                   handleToggleAll={this.handleToggleAll}
         />

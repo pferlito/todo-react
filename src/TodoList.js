@@ -3,6 +3,9 @@ import Toggle from './Toggle.js';
 import ToggleAll from './ToggleAll.js';
 
 class TodoList extends Component {
+  handleDoubleClick(index) {
+    this.props.handleStateChange(index, 'editing');
+  }
   render() {
     let filteredItems = this.props.list.items;
     // filter items according to selected filter
@@ -22,13 +25,15 @@ class TodoList extends Component {
             function (value, index) {
               return (
                 <li key={index}
-                    className={value.state === 'completed' ? 'completed' : ''}>
+                    onDoubleClick={(e) => self.handleDoubleClick(index)}
+                    className={value.state}>
                   <div className="view">
                     <Toggle value={value}
-                            handleChange={(index) => self.props.handleChange(index)}
+                            handleChange={(index, newState) => self.props.handleStateChange(index, newState)}
                             handleDestroy={(index) => self.props.handleDestroy(index)}
                             index={index}/>
                   </div>
+                  <input type="text" className="edit" defaultValue={value.text}/>
                 </li>
               )
             }

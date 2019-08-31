@@ -1,7 +1,15 @@
 import React, {Component} from 'react';
 
 class Toggle extends Component {
-  handleChange = () => this.props.handleChange(this.props.index);
+  handleChange = () => {
+    let newState;
+    if (this.props.value.state === 'completed') {
+      newState = 'active';
+    } else {
+      newState = 'completed';
+    }
+    this.props.handleChange(this.props.index, newState)
+  };
   handleDestroy = () => this.props.handleDestroy(this.props.index);
 
   render() {
