@@ -45,6 +45,16 @@ class App extends Component {
     this.setState(mutatedState);
   };
   /**
+   * Handle change in text.
+   * @param index
+   * @param newText
+   */
+  handleTextChange = (index, newText) => {
+    const mutatedState = [...this.state.items];
+    mutatedState[index].text = newText;
+    this.setState(mutatedState);
+  };
+  /**
    * Handle removal of item.
    * @param index
    */
@@ -91,6 +101,7 @@ class App extends Component {
         />
         <TodoList list={this.state}
                   handleStateChange={this.handleStateChange}
+                  handleTextChange={this.handleTextChange}
                   handleDestroy={this.handleDestroy}
                   handleToggleAll={this.handleToggleAll}
         />

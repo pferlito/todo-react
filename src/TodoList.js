@@ -6,6 +6,12 @@ class TodoList extends Component {
   handleDoubleClick(index) {
     this.props.handleStateChange(index, 'editing');
   }
+  handleChange(e, index) {
+    this.props.handleTextChange(index, e.target.value);
+  }
+  handleBlur(index) {
+    this.props.handleStateChange(index, 'active');
+  }
   render() {
     let filteredItems = this.props.list.items;
     // filter items according to selected filter
@@ -33,7 +39,12 @@ class TodoList extends Component {
                             handleDestroy={(index) => self.props.handleDestroy(index)}
                             index={index}/>
                   </div>
-                  <input type="text" className="edit" defaultValue={value.text}/>
+                  <input
+                    onChange={(e) => self.handleChange(e,index)}
+                    onBlur={(e) => self.handleBlur(index)}
+                    type="text"
+                    className="edit"
+                    defaultValue={value.text}/>
                 </li>
               )
             }
