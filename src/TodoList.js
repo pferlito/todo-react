@@ -1,14 +1,17 @@
 import React from 'react';
 import Toggle from './Toggle';
+import ToggleAll from './ToggleAll';
 import PropTypes from 'prop-types';
 
-function TodoList({list, handleChange, handleDestroy}) {
+
+function TodoList({list, handleChange, handleDestroy, handleToggleAll}) {
   const filteredItems = list.itemsList;
 
   return (
     <section className="main">
-      <input id="toggle-all" className="toggle-all" type="checkbox"/>
-      <label htmlFor="toggle-all">Mark all as complete</label>
+      <ToggleAll
+        handleToggleAll={() => handleToggleAll()}
+      />
       <ul className="todo-list">
         {filteredItems.map(
           function (item, index) {

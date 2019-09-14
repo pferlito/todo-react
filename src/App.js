@@ -9,6 +9,8 @@ const handleChange = () => {
 };
 const handleDestroy = () => {
 };
+const handleToggleAll = () => {
+};
 
 function App() {
   const handleAdd = (value) => {
@@ -29,6 +31,7 @@ function App() {
       <TodoList list={current_state}
                 handleChange={handleChange}
                 handleDestroy={handleDestroy}
+                handleToggleAll={handleToggleAll}
       />
       <Footer/>
     </section>
