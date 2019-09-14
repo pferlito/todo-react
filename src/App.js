@@ -14,26 +14,39 @@ const handleToggleAll = () => {
 
 function App() {
   const handleAdd = (value) => {
-    const newState = {...state};
+    const newState = {...currentState};
     newState.itemsList.push({text: value, state: 'active'});
     setState(newState);
   };
 
-  let state = {
+  let initialState = {
     itemsList: [{text: 'one', state: 'active'}, {text: 'two', state: 'active'}],
     filter: ""
   };
-  const [current_state, setState] = useState(state);
+  const [currentState, setState] = useState(initialState);
+
+  let activeCount = 0;
+  let completedCount = 0;
+  currentState.itemsList.forEach((el) => {
+    if (el.state === 'active') {
+      activeCount++;
+    } else {
+      completedCount++;
+    }
+  });
 
   return (
     <section className="todoapp">
       <Header handleAdd={handleAdd}/>
-      <TodoList list={current_state}
+      <TodoList list={currentState}
                 handleChange={handleChange}
                 handleDestroy={handleDestroy}
                 handleToggleAll={handleToggleAll}
       />
-      <Footer/>
+      <Footer
+        activeCount={activeCount}
+        completedCount={completedCount}
+      />
     </section>
   );
 }
