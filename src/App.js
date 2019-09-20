@@ -7,19 +7,31 @@ import Footer from './Footer.js';
 
 const handleChange = () => {
 };
-const handleDestroy = () => {
-};
+
 const handleToggleAll = () => {
 };
 
 function App() {
+  /**
+   * Add an element.
+   * @param value
+   */
   const handleAdd = (value) => {
     const newState = {...currentState};
     newState.itemsList.push({text: value, state: 'active'});
     setState(newState);
   };
-
-  let initialState = {
+  /**
+   * Remove an element.
+   * @param index
+   */
+  const handleDestroy = (index) => {
+    debugger;
+    const newState = {...currentState};
+    newState.itemsList.splice(index, 1);
+    setState(newState);
+  };
+  const initialState = {
     itemsList: [{text: 'one', state: 'active'}, {text: 'two', state: 'active'}],
     filter: ""
   };
