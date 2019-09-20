@@ -5,9 +5,6 @@ import Header from './Header.js';
 import Footer from './Footer.js';
 
 
-const handleChange = () => {
-};
-
 const handleToggleAll = () => {
 };
 
@@ -26,10 +23,22 @@ function App() {
    * @param index
    */
   const handleDestroy = (index) => {
-    debugger;
     const newState = {...currentState};
     newState.itemsList.splice(index, 1);
     setState(newState);
+  };
+
+
+  const handleStateChange = (index) => {
+    const mutatedState = {...currentState};
+    let newState;
+    if (mutatedState.itemsList[index].state === 'active') {
+      newState = 'completed';
+    } else {
+      newState = 'active';
+    }
+    mutatedState.itemsList[index].state = newState;
+    setState(mutatedState);
   };
   const initialState = {
     itemsList: [{text: 'one', state: 'active'}, {text: 'two', state: 'active'}],
@@ -51,7 +60,7 @@ function App() {
     <section className="todoapp">
       <Header handleAdd={handleAdd}/>
       <TodoList list={currentState}
-                handleChange={handleChange}
+                handleStateChange={handleStateChange}
                 handleDestroy={handleDestroy}
                 handleToggleAll={handleToggleAll}
       />

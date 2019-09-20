@@ -4,7 +4,7 @@ import ToggleAll from './ToggleAll';
 import PropTypes from 'prop-types';
 
 
-function TodoList({list, handleChange, handleDestroy, handleToggleAll}) {
+function TodoList({list, handleStateChange, handleDestroy, handleToggleAll}) {
   const filteredItems = list.itemsList;
 
   return (
@@ -20,7 +20,7 @@ function TodoList({list, handleChange, handleDestroy, handleToggleAll}) {
                   className={item.state === 'completed' ? 'completed' : ''}>
                 <div className="view">
                   <Toggle value={item}
-                    handleChange={(index) => handleChange(index)}
+                    handleChange={(index) => handleStateChange(index)}
                     handleDestroy={(index) => handleDestroy(index)}
                     index={index}/>
                 </div>
