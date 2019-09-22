@@ -5,9 +5,6 @@ import Header from './Header.js';
 import Footer from './Footer.js';
 
 
-const handleToggleAll = () => {
-};
-
 function App() {
   /**
    * Add an element.
@@ -28,7 +25,10 @@ function App() {
     setState(newState);
   };
 
-
+  /**
+   * Change element state: completed or active.
+   * @param index
+   */
   const handleStateChange = (index) => {
     const mutatedState = {...currentState};
     let newState;
@@ -40,12 +40,34 @@ function App() {
     mutatedState.itemsList[index].state = newState;
     setState(mutatedState);
   };
+
+  /**
+   * Handle toggle state for all elements.
+   */
+  const handleToggleAll = () => {
+    const mutatedState = {...currentState};
+    const foundActive = mutatedState.itemsList.some(function (el) {
+      return el.state === 'active';
+    });
+    let newval = foundActive ? 'completed' : 'active';
+    mutatedState.itemsList.forEach(function (el) {
+      el.state = newval;
+    });
+    setState(mutatedState);
+  };
+
+  /**
+   * Set initial state.
+   * @type {{filter: string, itemsList: *[]}}
+   */
   const initialState = {
     itemsList: [{text: 'one', state: 'active'}, {text: 'two', state: 'active'}],
     filter: ""
   };
+
   const [currentState, setState] = useState(initialState);
 
+  // update counts
   let activeCount = 0;
   let completedCount = 0;
   currentState.itemsList.forEach((el) => {
