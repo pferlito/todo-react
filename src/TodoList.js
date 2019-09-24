@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { PropTypes } from 'prop-types';
 import Toggle from './Toggle.js';
 import ToggleAll from './ToggleAll.js';
 
@@ -66,5 +67,13 @@ class TodoList extends Component {
     )
   }
 }
+
+TodoList.propTypes = {
+  list: PropTypes.string.isRequired,
+  handleStateChange: PropTypes.func.isRequired,
+  handleTextChange: PropTypes.func.isRequired,
+  handleDestroy: PropTypes.func.isRequired,
+  handleToggleAll: PropTypes.func.isRequired
+};
 
 export default TodoList;
