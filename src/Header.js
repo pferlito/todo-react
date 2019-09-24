@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 function Header({handleAdd}) {
   let textInput = null;
 
-  const doAdd = (e) => {
+  function doAdd(e) {
     e.preventDefault();
     const value = textInput.value;
     handleAdd(value);
