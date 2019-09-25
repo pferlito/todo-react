@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 
+
 class ToggleAll extends Component {
   handleToggleAll = (e) => {
     this.props.handleToggleAll();

@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { PropTypes } from 'prop-types';
 
 class Toggle extends Component {
   handleChange = () => {
@@ -28,5 +29,13 @@ class Toggle extends Component {
     )
   }
 }
+
+Toggle.propTypes = {
+  value: PropTypes.object.isRequired,
+  handleStateChange: PropTypes.func.isRequired,
+  handleToggleClick: PropTypes.func.isRequired,
+  handleDestroy: PropTypes.func.isRequired,
+  index: PropTypes.number.isRequired,
+};
 
 export default Toggle;

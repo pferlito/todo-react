@@ -69,7 +69,7 @@ class TodoList extends Component {
 }
 
 TodoList.propTypes = {
-  list: PropTypes.string.isRequired,
+  list: PropTypes.array.isRequired,
   handleStateChange: PropTypes.func.isRequired,
   handleTextChange: PropTypes.func.isRequired,
   handleDestroy: PropTypes.func.isRequired,

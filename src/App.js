@@ -5,10 +5,14 @@ import Header from './Header.js';
 import Footer from './Footer.js';
 
 class App extends Component {
-  state = {
-    items: [],
-    filter: ""
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      items: [{text: 'one', state: 'active'}, {text: 'two', state: 'active'}],
+      filter: ""
   };
+  }
 
   /**
    * Handle bulk toggling.

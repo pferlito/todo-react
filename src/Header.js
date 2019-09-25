@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { PropTypes } from 'prop-types';
 
 class Header extends Component {
   constructor(props) {
@@ -26,5 +27,10 @@ class Header extends Component {
     )
   }
 }
+
+Header.propTypes = {
+  list: PropTypes.array.isRequired,
+  handleAdd: PropTypes.func.isRequired
+};
 
 export default Header;

@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { PropTypes } from 'prop-types';
 
 class Footer extends Component {
   render() {
@@ -33,5 +34,13 @@ class Footer extends Component {
     )
   }
 }
+
+Footer.propTypes = {
+  list: PropTypes.array.isRequired,
+  handleFilter: PropTypes.func.isRequired,
+  handleClear: PropTypes.func.isRequired,
+  activeCount: PropTypes.number.isRequired,
+  completedCount: PropTypes.number.isRequired
+};
 
 export default Footer;
