@@ -11,7 +11,7 @@ class App extends Component {
     this.state = {
       items: [{text: 'one', state: 'active'}, {text: 'two', state: 'active'}],
       filter: ""
-  };
+    };
   }
 
   /**

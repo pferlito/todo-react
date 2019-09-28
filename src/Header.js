@@ -7,6 +7,10 @@ class Header extends Component {
     this.input = React.createRef();
   }
 
+  /**
+   * Handle item add.
+   * @param e
+   */
   handleAdd = (e) => {
     e.preventDefault();
     const value = this.input.current.value;
