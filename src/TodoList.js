@@ -37,11 +37,10 @@ class TodoList extends Component {
         return el.state === this.props.list.filter;
       });
     }
-    const self = this;
     return (
       <section className="main">
         <ToggleAll
-          handleToggleAll={() => self.props.handleToggleAll()}
+          handleToggleAll={() => this.props.handleToggleAll()}
         />
         <ul className="todo-list">
           {filteredItems.map((value, index) => {
@@ -51,7 +50,7 @@ class TodoList extends Component {
                     className={value.state}>
                   <div className="view">
                     <Toggle value={value}
-                      handleStateChange={(index, newState) => self.props.handleStateChange(index, newState)}
+                      handleStateChange={(index, newState) => this.props.handleStateChange(index, newState)}
                       handleToggleClick={(index) => this.handleToggleClick(index)}
                       handleDestroy={(index) => this.props.handleDestroy(index)}
                       index={index}/>
