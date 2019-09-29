@@ -4,8 +4,9 @@ import ToggleAll from './ToggleAll';
 import PropTypes from 'prop-types';
 
 
-function TodoList({list, handleStateChange, handleDestroy, handleToggleAll}) {
-  const filteredItems = list.itemsList;
+function TodoList({state, handleStateChange, handleDestroy, handleToggleAll}) {
+  const filteredItems = state.itemsList.filter(item => state.filter ?
+    item.state === state.filter : true);
 
   return (
     <section className="main">
@@ -34,7 +35,10 @@ function TodoList({list, handleStateChange, handleDestroy, handleToggleAll}) {
 }
 
 TodoList.propTypes = {
-  list: PropTypes.object.isRequired
+  state: PropTypes.object.isRequired,
+  handleStateChange: PropTypes.func.isRequired,
+  handleDestroy: PropTypes.func.isRequired,
+  handleToggleAll: PropTypes.func.isRequired,
 };
 
 export default TodoList;

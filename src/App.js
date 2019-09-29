@@ -24,6 +24,12 @@ function App() {
     }
   });
 
+  function handleFilter(value) {
+    console.log('in handleFilter');
+    const newState = {...currentState};
+    newState.filter = value;
+    setState(newState);
+  }
   /**
    * Add an element.
    * @param value
@@ -77,7 +83,7 @@ function App() {
   return (
     <section className="todoapp">
       <Header handleAdd={handleAdd}/>
-      <TodoList list={currentState}
+      <TodoList state={currentState}
                 handleStateChange={handleStateChange}
                 handleDestroy={handleDestroy}
                 handleToggleAll={handleToggleAll}
@@ -85,6 +91,7 @@ function App() {
       <Footer
         activeCount={activeCount}
         completedCount={completedCount}
+        handleFilter={handleFilter}
       />
     </section>
   );
