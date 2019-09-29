@@ -24,6 +24,10 @@ function App() {
     }
   });
 
+  /**
+   * Filter items.
+   * @param value
+   */
   function handleFilter(value) {
     console.log('in handleFilter');
     const newState = {...currentState};
