@@ -1,10 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-function ToggleAll(props) {
-  function handleToggleAll() {
-    props.handleToggleAll();
-  };
 
+function ToggleAll({handleToggleAll}) {
   return (
     <React.Fragment>
       <input id="toggle-all" className="toggle-all" type="checkbox"
@@ -13,5 +11,9 @@ function ToggleAll(props) {
     </React.Fragment>
   )
 }
+
+ToggleAll.propTypes = {
+  handleToggleAll: PropTypes.func.isRequired
+};
 
 export default ToggleAll;

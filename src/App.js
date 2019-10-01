@@ -29,7 +29,6 @@ function App() {
    * @param value
    */
   function handleFilter(value) {
-    console.log('in handleFilter');
     const newState = {...currentState};
     newState.filter = value;
     setState(newState);
@@ -76,7 +75,7 @@ function App() {
     const mutatedState = {...currentState};
     mutatedState.itemsList = mutatedState.itemsList.filter((el) => el.state !== 'completed');
     setState(mutatedState);
-  };
+  }
 
   /**
    * Handle toggle state for all elements.

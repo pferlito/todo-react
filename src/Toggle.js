@@ -20,6 +20,9 @@ function Toggle({value, handleChange, handleDestroy, index}) {
 
 Toggle.propTypes = {
   value: PropTypes.object.isRequired,
+  handleChange: PropTypes.func.isRequired,
+  handleDestroy: PropTypes.func.isRequired,
+  index: PropTypes.number.isRequired,
 };
 
 export default Toggle;

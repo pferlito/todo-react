@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from "./Header";
+import PropTypes from 'prop-types';
 
 function Footer({activeCount, completedCount, handleFilter, handleClear}) {
   const items = activeCount === 1 ? 'item' : 'items';
@@ -32,7 +32,10 @@ function Footer({activeCount, completedCount, handleFilter, handleClear}) {
 }
 
 Footer.propTypes = {
-
+  activeCount: PropTypes.number.isRequired,
+  completedCount: PropTypes.number.isRequired,
+  handleFilter: PropTypes.func.isRequired,
+  handleClear: PropTypes.func.isRequired,
 };
 
 
