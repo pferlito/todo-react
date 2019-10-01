@@ -1,8 +1,11 @@
 import React from 'react';
 import Header from "./Header";
 
-function Footer({activeCount, completedCount, handleFilter}) {
+function Footer({activeCount, completedCount, handleFilter, handleClear}) {
   const items = activeCount === 1 ? 'item' : 'items';
+  const completedStyle = {
+    display: completedCount ? 'block' : 'none'
+  };
 
   return (
     <footer className="footer">
@@ -19,7 +22,11 @@ function Footer({activeCount, completedCount, handleFilter}) {
           <a onClick={() => handleFilter('completed')} href="#/completed">Completed</a>
         </li>
       </ul>
-      <button className="clear-completed">Clear completed</button>
+      <button
+        style={completedStyle}
+        className="clear-completed"
+        onClick={() => handleClear()}>Clear Completed
+      </button>
     </footer>
   )
 }

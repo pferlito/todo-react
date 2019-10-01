@@ -70,6 +70,15 @@ function App() {
   }
 
   /**
+   * Handle clear of completed items.
+   */
+  function handleClear() {
+    const mutatedState = {...currentState};
+    mutatedState.itemsList = mutatedState.itemsList.filter((el) => el.state !== 'completed');
+    setState(mutatedState);
+  };
+
+  /**
    * Handle toggle state for all elements.
    */
   function handleToggleAll() {
@@ -88,14 +97,15 @@ function App() {
     <section className="todoapp">
       <Header handleAdd={handleAdd}/>
       <TodoList state={currentState}
-                handleStateChange={handleStateChange}
-                handleDestroy={handleDestroy}
-                handleToggleAll={handleToggleAll}
+        handleStateChange={handleStateChange}
+        handleDestroy={handleDestroy}
+        handleToggleAll={handleToggleAll}
       />
       <Footer
         activeCount={activeCount}
         completedCount={completedCount}
         handleFilter={handleFilter}
+        handleClear={handleClear}
       />
     </section>
   );
