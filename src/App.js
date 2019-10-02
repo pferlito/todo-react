@@ -26,7 +26,7 @@ function App() {
 
   /**
    * Filter items.
-   * @param value
+   * @param value string
    */
   function handleFilter(value) {
     const newState = {...currentState};
@@ -35,7 +35,7 @@ function App() {
   }
   /**
    * Add an element.
-   * @param value
+   * @param value string
    */
   function handleAdd(value) {
     const newState = {...currentState};
@@ -44,7 +44,7 @@ function App() {
   }
   /**
    * Remove an element.
-   * @param index
+   * @param index number
    */
   function handleDestroy(index) {
     const newState = {...currentState};
@@ -54,16 +54,11 @@ function App() {
 
   /**
    * Change element state: completed or active.
-   * @param index
+   * @param index number
+   * @param newState string
    */
-  function handleStateChange(index) {
+  function handleStateChange(index, newState) {
     const mutatedState = {...currentState};
-    let newState;
-    if (mutatedState.itemsList[index].state === 'active') {
-      newState = 'completed';
-    } else {
-      newState = 'active';
-    }
     mutatedState.itemsList[index].state = newState;
     setState(mutatedState);
   }

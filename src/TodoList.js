@@ -8,6 +8,30 @@ function TodoList({state, handleStateChange, handleDestroy, handleToggleAll}) {
   const filteredItems = state.itemsList.filter(item => state.filter ?
     item.state === state.filter : true);
 
+  function handleTextChange(e, index) {
+  }
+
+  function handleBlur(index) {
+  }
+
+  function handleDoubleClick(index) {
+    handleStateChange(index, 'editing');
+  }
+
+  /**
+   * Toggle state of an item.
+   * @param index
+   */
+  function doToggle(index) {
+    let newState;
+    if (filteredItems[index].state === 'completed') {
+      newState = 'active';
+    } else {
+      newState = 'completed'
+    }
+    handleStateChange(index, newState);
+  }
+
   return (
     <section className="main">
       <ToggleAll
@@ -18,13 +42,24 @@ function TodoList({state, handleStateChange, handleDestroy, handleToggleAll}) {
           function (item, index) {
             return (
               <li key={index}
+                  onDoubleClick={() => handleDoubleClick(index)}
                   className={item.state === 'completed' ? 'completed' : ''}>
                 <div className="view">
                   <Toggle value={item}
-                    handleChange={(index) => handleStateChange(index)}
-                    handleDestroy={(index) => handleDestroy(index)}
-                    index={index}/>
+                          handleChange={(index) => doToggle(index)}
+                          handleDestroy={(index) => handleDestroy(index)}
+                          index={index}/>
                 </div>
+                {item.state === 'editing' &&
+                <input
+                  type="text"
+                  className="edit"
+                  onChange={(e) => handleTextChange(e, index)}
+                  onBlur={() => {
+                    handleBlur(index)
+                  }}
+                  defaultValue={item.text}
+                />}
               </li>
             )
           }
