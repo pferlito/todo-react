@@ -43,7 +43,7 @@ function TodoList({state, handleStateChange, handleDestroy, handleToggleAll}) {
             return (
               <li key={index}
                   onDoubleClick={() => handleDoubleClick(index)}
-                  className={item.state === 'completed' ? 'completed' : ''}>
+                  className={item.state}>
                 <div className="view">
                   <Toggle value={item}
                           handleChange={(index) => doToggle(index)}
