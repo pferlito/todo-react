@@ -11,9 +11,18 @@ function TodoList({state, handleStateChange, handleDestroy, handleToggleAll}) {
   function handleTextChange(e, index) {
   }
 
+  /**
+   * Blur handler. Puts the item in active or view mode.
+   * @param index
+   */
   function handleBlur(index) {
+    handleStateChange(index,'active');
   }
 
+  /**
+   * Double-click handler. Puts the item in edit mode.
+   * @param index
+   */
   function handleDoubleClick(index) {
     handleStateChange(index, 'editing');
   }
