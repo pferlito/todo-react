@@ -8,6 +8,11 @@ function TodoList({state, handleTextChange, handleStateChange, handleDestroy, ha
   const filteredItems = state.itemsList.filter(item => state.filter ?
     item.state === state.filter : true);
 
+  /**
+   * Change handler.
+   * @param e object
+   * @param index number
+   */
   function doTextChange(e, index) {
     const newValue = e.target.value;
     handleTextChange(index, newValue);
