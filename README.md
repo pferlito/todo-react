@@ -8,6 +8,8 @@ Branches:
 
 [functional](https://github.com/pferlito/todo-react/tree/functional): Functional component implementation
 
+[context](https://github.com/pferlito/todo-react/tree/context): Functional component implementation using Context
+
 
 ##### Author:
 * Paul Ferlito
