@@ -1,15 +1,13 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import './App.css';
 import TodoList from './TodoList.js';
 import Header from './Header.js';
 import Footer from './Footer.js';
+import TodoContext from './TodoContext';
 
 
 function App() {
-  const initialState = {
-    itemsList: [{text: 'one', state: 'active'}, {text: 'two', state: 'active'}],
-    filter: ""
-  };
+  const initialState = useContext(TodoContext);
 
   const [currentState, setState] = useState(initialState);
 
@@ -103,12 +101,14 @@ function App() {
   return (
     <section className="todoapp">
       <Header handleAdd={handleAdd}/>
-      <TodoList state={currentState}
-                handleTextChange={handleTextChange}
-                handleStateChange={handleStateChange}
-                handleDestroy={handleDestroy}
-                handleToggleAll={handleToggleAll}
-      />
+      <TodoContext.Provider value={currentState}>
+        <TodoList
+          handleTextChange={handleTextChange}
+          handleStateChange={handleStateChange}
+          handleDestroy={handleDestroy}
+          handleToggleAll={handleToggleAll}
+        />
+      </TodoContext.Provider>
       <Footer
         activeCount={activeCount}
         completedCount={completedCount}

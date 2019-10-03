@@ -1,13 +1,21 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import Toggle from './Toggle';
 import ToggleAll from './ToggleAll';
 import PropTypes from 'prop-types';
+import TodoContext from './TodoContext';
 
 
-function TodoList({state, handleTextChange, handleStateChange, handleDestroy, handleToggleAll}) {
+function TodoList({handleTextChange, handleStateChange, handleDestroy, handleToggleAll}) {
+  const state = useContext(TodoContext);
+
   const filteredItems = state.itemsList.filter(item => state.filter ?
     item.state === state.filter : true);
 
+  /**
+   * Change handler.
+   * @param e object
+   * @param index number
+   */
   function doTextChange(e, index) {
     const newValue = e.target.value;
     handleTextChange(index, newValue);
@@ -81,7 +89,6 @@ function TodoList({state, handleTextChange, handleStateChange, handleDestroy, ha
 }
 
 TodoList.propTypes = {
-  state: PropTypes.object.isRequired,
   handleTextChange: PropTypes.func.isRequired,
   handleStateChange: PropTypes.func.isRequired,
   handleDestroy: PropTypes.func.isRequired,
