@@ -33,6 +33,7 @@ function App() {
     newState.filter = value;
     setState(newState);
   }
+
   /**
    * Add an element.
    * @param value string
@@ -42,6 +43,7 @@ function App() {
     newState.itemsList.push({text: value, state: 'active'});
     setState(newState);
   }
+
   /**
    * Remove an element.
    * @param index number
@@ -60,6 +62,17 @@ function App() {
   function handleStateChange(index, newState) {
     const mutatedState = {...currentState};
     mutatedState.itemsList[index].state = newState;
+    setState(mutatedState);
+  }
+
+  /**
+   * Change element text value.
+   * @param index number
+   * @param newValue string
+   */
+  function handleTextChange(index, newValue) {
+    const mutatedState = {...currentState};
+    mutatedState.itemsList[index].text = newValue;
     setState(mutatedState);
   }
 
@@ -91,9 +104,10 @@ function App() {
     <section className="todoapp">
       <Header handleAdd={handleAdd}/>
       <TodoList state={currentState}
-        handleStateChange={handleStateChange}
-        handleDestroy={handleDestroy}
-        handleToggleAll={handleToggleAll}
+                handleTextChange={handleTextChange}
+                handleStateChange={handleStateChange}
+                handleDestroy={handleDestroy}
+                handleToggleAll={handleToggleAll}
       />
       <Footer
         activeCount={activeCount}

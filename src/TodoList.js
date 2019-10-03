@@ -4,16 +4,18 @@ import ToggleAll from './ToggleAll';
 import PropTypes from 'prop-types';
 
 
-function TodoList({state, handleStateChange, handleDestroy, handleToggleAll}) {
+function TodoList({state, handleTextChange, handleStateChange, handleDestroy, handleToggleAll}) {
   const filteredItems = state.itemsList.filter(item => state.filter ?
     item.state === state.filter : true);
 
-  function handleTextChange(e, index) {
+  function doTextChange(e, index) {
+    const newValue = e.target.value;
+    handleTextChange(index, newValue);
   }
 
   /**
    * Blur handler. Puts the item in active or view mode.
-   * @param index
+   * @param index number
    */
   function handleBlur(index) {
     handleStateChange(index,'active');
@@ -21,7 +23,7 @@ function TodoList({state, handleStateChange, handleDestroy, handleToggleAll}) {
 
   /**
    * Double-click handler. Puts the item in edit mode.
-   * @param index
+   * @param index number
    */
   function handleDoubleClick(index) {
     handleStateChange(index, 'editing');
@@ -29,7 +31,7 @@ function TodoList({state, handleStateChange, handleDestroy, handleToggleAll}) {
 
   /**
    * Toggle state of an item.
-   * @param index
+   * @param index number
    */
   function doToggle(index) {
     let newState;
@@ -63,7 +65,7 @@ function TodoList({state, handleStateChange, handleDestroy, handleToggleAll}) {
                 <input
                   type="text"
                   className="edit"
-                  onChange={(e) => handleTextChange(e, index)}
+                  onChange={(e) => doTextChange(e, index)}
                   onBlur={() => {
                     handleBlur(index)
                   }}
@@ -80,6 +82,7 @@ function TodoList({state, handleStateChange, handleDestroy, handleToggleAll}) {
 
 TodoList.propTypes = {
   state: PropTypes.object.isRequired,
+  handleTextChange: PropTypes.func.isRequired,
   handleStateChange: PropTypes.func.isRequired,
   handleDestroy: PropTypes.func.isRequired,
   handleToggleAll: PropTypes.func.isRequired,
