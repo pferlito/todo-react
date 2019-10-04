@@ -13,6 +13,9 @@ function App() {
 
   const [currentState, setState] = useState(initialState);
 
+  /**
+   * Fetch data and set state.
+   */
   useEffect(() => {
     async function getData() {
       const response = await fetch('data.json');
