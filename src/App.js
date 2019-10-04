@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './App.css';
 import TodoList from './TodoList.js';
 import Header from './Header.js';
@@ -7,15 +7,27 @@ import Footer from './Footer.js';
 
 function App() {
   const initialState = {
-    itemsList: [{text: 'one', state: 'active'}, {text: 'two', state: 'active'}],
+    itemsList: [],
     filter: ""
   };
 
   const [currentState, setState] = useState(initialState);
 
+  useEffect(() => {
+    async function getData() {
+      const response = await fetch('data.json');
+      const data = await response.json();
+      const state = {};
+      state.itemsList = data;
+      setState(state);
+    }
+    getData();
+  },[]);
+
   // update counts
   let activeCount = 0;
   let completedCount = 0;
+
   currentState.itemsList.forEach((el) => {
     if (el.state === 'active') {
       activeCount++;
